@@ -40,15 +40,20 @@ const playBtn = document.getElementById('play');
         cell.style.width = `calc(100%  / ${cellPerSide}) `;
         cell.style.height = `calc(100% / ${cellPerSide} ) `;
         cell.innerHTML = `
-        <span>${num}</span> 
+        <span></span> 
         `;
 
 
         // cambia colore in base a bomba o meno
         cell.addEventListener('click', function(){
             if(bombsPosition.includes(num)){
-                document.querySelectorAll('div');
                 this.classList.add('red');
+                const loose = document.createElement('p');
+                loose.className = 'looser';
+                loose.innerHTML.toUpperCase = 'hai perso !';
+
+                gameField.append(loose);
+                
             }else{
                  this.classList.add('green');
             };

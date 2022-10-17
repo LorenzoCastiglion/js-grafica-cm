@@ -18,6 +18,7 @@ header, footer {
 }
 
 main {
+    
     height: calc(100vh - 160px);
     overflow-y: auto;
 }
@@ -32,6 +33,9 @@ main {
    
 }
 
+.griglia{
+    position: relative;
+}
 
 .square{
     display: flex;
@@ -51,6 +55,18 @@ main {
     box-shadow: inset 0 0 10px #500202;
     background-color: rgb(176, 10, 10);
 }
+
+.looser{
+    position: absolute;
+    z-index: 100;
+    top: 50%;
+    left: 50%;
+    background-color: red;
+    height: 100px;
+    width: 100px;
+}
+
+
 
 
 
