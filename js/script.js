@@ -5,18 +5,41 @@
 const playBtn = document.getElementById('play');
 
     function play(){
-    let numCell;
 
+
+    const NUM_BOMB = 16;
+    const bombsPosition = [];    
+    
+    let numCell;
+    const gameField = document.getElementById('game-field');
+    fieldGame.innerHTML = '';
+    const levelHTML = document.getElementById('livello');
+    const level = levelHTML.value;
+    switch(level) {
+        case '1':
+        default:
+            numCell = 100;
+            break;
+        case '2':
+            numCell = 81;
+            break;
+        case '3':
+            numCell = 49;
+            break;
+    }
 
 
 
     // funzione genera celle
 
-    function drawCell(numCell){
+    function drawCell(num){
+        const cellPerSide = Math.sqrt(numCell);
         const cell = document.createElement('div');
         cell.className = 'square';
+        cell.style.width = `calc(100% / ${cellPerSide})`;
+        cell.style.height = `calc(100% / ${cellPerSide})`;
         cell.innerHTML = `
-        <span>${numCell}</span> 
+        <span>${num}</span> 
         `;
 
         cell.addEventListener('click', function(){
@@ -26,20 +49,27 @@ const playBtn = document.getElementById('play');
             
         )
         return cell;
+    }
 
+
+    while(bombsPosition.length < NUM_BOMB){
+        const bomb = randomNumber(1, numCell);
+        if(!bombsPosition.includes(bomb)){
+            bombsPosition.push(bomb);
+        }
     }
 
     // funzione che genera il campo minato
     function drawGrid(){
-        const gameField = document.getElementById('game-field');
+        
         const grid = document.createElement('div');
         grid.className = 'grid';
         
         // for loop che genera le celle in base alla difficoltà
 
-        for (let i = 1; i < 100; i++){
-            const cell = drawCell;
-            grid.appendChild('cell');
+        for (let i = 1; i < numCell; i++){
+            const cell = drawCell(i);
+            grid.appendChild(cell);
         }
 
         // appendo le celle alla griglia
