@@ -12,7 +12,7 @@ const playBtn = document.getElementById('play');
     
     let numCell;
     const gameField = document.getElementById('game-field');
-    fieldGame.innerHTML = '';
+    gameField.innerHTML = '';
     const levelHTML = document.getElementById('livello');
     const level = levelHTML.value;
     switch(level) {
@@ -36,8 +36,8 @@ const playBtn = document.getElementById('play');
         const cellPerSide = Math.sqrt(numCell);
         const cell = document.createElement('div');
         cell.className = 'square';
-        cell.style.width = `calc(100% / ${cellPerSide})`;
-        cell.style.height = `calc(100% / ${cellPerSide})`;
+        cell.style.width = `calc(100%  / ${cellPerSide}) `;
+        cell.style.height = `calc(100% / ${cellPerSide} ) `;
         cell.innerHTML = `
         <span>${num}</span> 
         `;
@@ -59,6 +59,8 @@ const playBtn = document.getElementById('play');
         }
     }
 
+    console.log(bombsPosition);
+
     // funzione che genera il campo minato
     function drawGrid(){
         
@@ -67,7 +69,7 @@ const playBtn = document.getElementById('play');
         
         // for loop che genera le celle in base alla difficoltà
 
-        for (let i = 1; i < numCell; i++){
+        for (let i = 1; i <= numCell; i++){
             const cell = drawCell(i);
             grid.appendChild(cell);
         }

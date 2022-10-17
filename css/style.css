@@ -1,11 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+   
 }
 
 body {
-    background-color: rgb(231, 218, 25);
+    font-family: 'Staatliches', cursive;
+    
 }
 
 header, footer {
@@ -19,12 +23,13 @@ main {
 }
 
 .grid{
+    border: 2px solid black;
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
-    width: 500px;
-    height: 500px;
-    background-color: darkkhaki;
+   width: 500px;
+   height: 500px;
+   
 }
 
 
@@ -33,7 +38,8 @@ main {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    border: 1px solid black;
+   
+    border: 2px solid black;
 }
 
 .green{
