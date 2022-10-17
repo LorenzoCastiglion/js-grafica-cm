@@ -8,7 +8,8 @@ const playBtn = document.getElementById('play');
 
 
     const NUM_BOMB = 16;
-    const bombsPosition = [];    
+    const bombsPosition = [];  
+    
     
     let numCell;
     const gameField = document.getElementById('game-field');
@@ -42,9 +43,19 @@ const playBtn = document.getElementById('play');
         <span>${num}</span> 
         `;
 
+
+        // cambia colore in base a bomba o meno
         cell.addEventListener('click', function(){
+            if(bombsPosition.includes(num)){
+                document.querySelectorAll('div');
+                this.classList.add('red');
+            }else{
+                 this.classList.add('green');
+            };
             
-            this.classList.add('green')
+            
+            
+           
         }
             
         )
@@ -57,6 +68,7 @@ const playBtn = document.getElementById('play');
         if(!bombsPosition.includes(bomb)){
             bombsPosition.push(bomb);
         }
+       
     }
 
     console.log(bombsPosition);
