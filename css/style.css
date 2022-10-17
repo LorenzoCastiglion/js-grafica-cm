@@ -54,6 +54,20 @@ main {
 .red{
     box-shadow: inset 0 0 10px #500202;
     background-color: rgb(176, 10, 10);
+    background-image: url(../img/bomba-01.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#error{
+    
+    width: 500px;
+    height: 500px;
+    left: 50%;
+    top: 48%;
+    transform: translate(-50%, -50%);
+    position: absolute;
 }
 
 

@@ -5,8 +5,10 @@
 const playBtn = document.getElementById('play');
 
     function play(){
-
+    
+    removeFirstNotification();
     const loose = document.getElementById('error');
+    loose.classList.add('d-none');
     const NUM_BOMB = 16;
     const bombsPosition = [];  
     
@@ -43,6 +45,8 @@ const playBtn = document.getElementById('play');
         <span></span> 
         `;
 
+
+    // assegnazione delle mine all'aray di celle random
     while(bombsPosition.length < NUM_BOMB){
             const bomb = randomNumber(1, numCell);
             if(!bombsPosition.includes(bomb)){
@@ -51,13 +55,12 @@ const playBtn = document.getElementById('play');
        
         }
        
-
-        // assegnazione mine
+        // assegnazione variabile mine
         if(bombsPosition.includes(num)){
             cell.classList.add('mine');
         };
 
-        // cambia colore in base a bomba o meno
+        //event per cambiare colore in base a bomba o meno
         cell.addEventListener('click', function(){
             
             if(cell.classList.contains('mine')){
@@ -65,8 +68,9 @@ const playBtn = document.getElementById('play');
                 for (let i  = 0; i < mineField.length; i++){
                 mineField[i].classList.add('red');
             };
-                const loose = document.getElementById('error')
-                cell.classList.add('red')
+                const loose = document.getElementById('error');
+                loose.classList.remove('d-none');
+                cell.classList.add('red');
                 const divAlert = notificationError('hai perso!');
                 loose.append(divAlert);    
             }else{
@@ -77,6 +81,8 @@ const playBtn = document.getElementById('play');
 
         return cell;
     }
+
+    
 
 
   
