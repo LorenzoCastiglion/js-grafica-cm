@@ -43,39 +43,43 @@ const playBtn = document.getElementById('play');
         <span></span> 
         `;
 
+    while(bombsPosition.length < NUM_BOMB){
+            const bomb = randomNumber(1, numCell);
+            if(!bombsPosition.includes(bomb)){
+                bombsPosition.push(bomb);
+            }
+       
+        }
+       
+
+        // assegnazione mine
+        if(bombsPosition.includes(num)){
+            cell.classList.add('mine');
+        };
 
         // cambia colore in base a bomba o meno
         cell.addEventListener('click', function(){
-            if(bombsPosition.includes(num)){
+            
+            if(cell.classList.contains('mine')){
+                 const mineField = document.querySelectorAll('.mine');
+                for (let i  = 0; i < mineField.length; i++){
+                mineField[i].classList.add('red');
+            };
                 const loose = document.getElementById('error')
-                this.classList.add('red');
+                cell.classList.add('red')
                 const divAlert = notificationError('hai perso!');
-                loose.append(divAlert);
-             
-
-
-                
+                loose.append(divAlert);    
             }else{
                  this.classList.add('green');
             };
-            
-            
-            
-           
         }
-            
         )
+
         return cell;
     }
 
 
-    while(bombsPosition.length < NUM_BOMB){
-        const bomb = randomNumber(1, numCell);
-        if(!bombsPosition.includes(bomb)){
-            bombsPosition.push(bomb);
-        }
-       
-    }
+  
 
     console.log(bombsPosition);
 
