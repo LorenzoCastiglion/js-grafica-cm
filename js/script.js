@@ -48,11 +48,10 @@ const playBtn = document.getElementById('play');
         cell.addEventListener('click', function(){
             if(bombsPosition.includes(num)){
                 this.classList.add('red');
-                const loose = document.createElement('p');
-                loose.className = 'looser';
-                loose.innerHTML.toUpperCase = 'hai perso !';
+                const divAlert = notificationError('hai perso!');
+                gameField.prepend(divAlert);
 
-                gameField.append(loose);
+
                 
             }else{
                  this.classList.add('green');
