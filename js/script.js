@@ -6,7 +6,7 @@ const playBtn = document.getElementById('play');
 
     function play(){
 
-
+    const loose = document.getElementById('error');
     const NUM_BOMB = 16;
     const bombsPosition = [];  
     
@@ -47,9 +47,11 @@ const playBtn = document.getElementById('play');
         // cambia colore in base a bomba o meno
         cell.addEventListener('click', function(){
             if(bombsPosition.includes(num)){
+                const loose = document.getElementById('error')
                 this.classList.add('red');
                 const divAlert = notificationError('hai perso!');
-                gameField.prepend(divAlert);
+                loose.append(divAlert);
+             
 
 
                 
