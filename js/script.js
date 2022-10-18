@@ -4,7 +4,7 @@
 
 const playBtn = document.getElementById('play');
 
-    function play(){
+function play(){
     
     removeFirstNotification();
     const loose = document.getElementById('error');
@@ -13,6 +13,8 @@ const playBtn = document.getElementById('play');
     const bombsPosition = [];  
     
     
+
+    // selettore della difficoltà del livello e pulitore del campo da gioco
     let numCell;
     const gameField = document.getElementById('game-field');
     gameField.innerHTML = '';
