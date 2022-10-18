@@ -11,6 +11,8 @@ function play(){
     loose.classList.add('d-none');
     const NUM_BOMB = 16;
     const bombsPosition = [];  
+    let score = 0;
+    let selettore;
     
     
 
@@ -34,6 +36,7 @@ function play(){
     }
 
 
+    const MAX_ATTEMPTS = numCell - NUM_BOMB;
 
     // funzione genera celle
 
@@ -43,13 +46,11 @@ function play(){
         cell.className = 'square';
         cell.style.width = `calc(100%  / ${cellPerSide}) `;
         cell.style.height = `calc(100% / ${cellPerSide} ) `;
-        cell.innerHTML = `
-        <span></span> 
-        `;
+       
 
 
-    // assegnazione delle mine all'aray di celle random
-    while(bombsPosition.length < NUM_BOMB){
+        // assegnazione delle mine all'aray di celle random
+         while(bombsPosition.length < NUM_BOMB){
             const bomb = randomNumber(1, numCell);
             if(!bombsPosition.includes(bomb)){
                 bombsPosition.push(bomb);
@@ -62,25 +63,51 @@ function play(){
             cell.classList.add('mine');
         };
 
+
+
         //event per cambiare colore in base a bomba o meno
-        cell.addEventListener('click', function(){
+        cell.addEventListener('click', selettore = function giuda(){
             
             if(cell.classList.contains('mine')){
-                 const mineField = document.querySelectorAll('.mine');
+                const mineField = document.querySelectorAll('.mine');
                 for (let i  = 0; i < mineField.length; i++){
-                mineField[i].classList.add('red');
-            };
-                const loose = document.getElementById('error');
-                loose.classList.remove('d-none');
+                    mineField[i].classList.add('red');
+                };
                 cell.classList.add('red');
-                const divAlert = notificationError('hai perso!');
-                loose.append(divAlert);    
+                this.removeEventListener('click', giuda);
+                endGame();
+
             }else{
+                this.removeEventListener('click', giuda);
                  this.classList.add('green');
+                 score++;
+                 console.log(score)
+                 
+                //  cell.removeEventListener('click');
             };
+
         }
         )
 
+        function endGame(){
+            const squares = document.getElementsByClassName('square');
+            for(let i = 0; i < squares.length; i ++){
+                squares[i].removeEventListener('click', selettore);
+                squares[i].classList.add('green');
+            }
+            if(score === MAX_ATTEMPTS){
+                console.log('you win');
+                
+            }else{
+                console.log('you lose')
+                const loose = document.getElementById('error');
+                loose.classList.remove('d-none');
+                const divAlert = notificationError('hai perso!');
+                loose.append(divAlert);  
+            }
+        }
+        
+        
         return cell;
     }
 
